@@ -1,0 +1,41 @@
+body{
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  color: aqua;
+
+  .container{
+    width: 100%;
+    height: 100%;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    // display: flex;
+
+    section{
+      // flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 98.8vw;
+      height: 100vh;
+      scroll-snap-align: start;
+
+      &:nth-of-type(1){
+        background-color: rgb(116, 197, 36);
+      }
+      &:nth-of-type(2){
+        background-color: blueviolet;
+      }
+      &:nth-of-type(3){
+        background-color: chocolate;
+      }
+      &:nth-of-type(4){
+        background-color: darkturquoise;
+      }
+
+      h1{
+        font-size: 14em;
+      }
+    }
+  }
+}
