@@ -1,0 +1,12 @@
+#Q1
+ls
+
+#Q2
+head webserrver.log
+#can find date and IP address of attacker
+
+#secretfiles
+grep -r "santa" ./
+
+#flag
+grep -r "THM{" ./

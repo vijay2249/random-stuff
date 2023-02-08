@@ -1,0 +1,8 @@
+# scanning
+nmap -sC -sV -A -p- $IP
+
+#connect to smb server from the file explorer header
+#enter the command in the search path in the file explorer
+smb://$IP
+
+#some folders navigations may require username and passwords

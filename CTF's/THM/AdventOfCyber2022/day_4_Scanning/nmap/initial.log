@@ -1,0 +1,41 @@
+# Nmap 7.93 scan initiated Tue Dec  6 09:31:15 2022 as: nmap -sC -sV -o nmap/initial.log -A 10.10.189.209
+Nmap scan report for 10.10.189.209
+Host is up (0.20s latency).
+Not shown: 996 closed tcp ports (conn-refused)
+PORT    STATE SERVICE     VERSION
+22/tcp  open  ssh         OpenSSH 7.6p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 5291ff0eda2d4394e4cbbb23ec54e15f (RSA)
+|   256 b4bda0d1c1ab974e04ddb43e42cdbcd6 (ECDSA)
+|_  256 e8c00833f97a739365e54f72ff922a1a (ED25519)
+80/tcp  open  http        Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Apache2 Ubuntu Default Page: It works
+139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp open  netbios-ssn Samba smbd 4.7.6-Ubuntu (workgroup: WORKGROUP)
+Service Info: Host: IP-10-10-189-209; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+|_clock-skew: mean: 16m17s, deviation: 1s, median: 16m16s
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.7.6-Ubuntu)
+|   Computer name: ip-10-10-189-209
+|   NetBIOS computer name: IP-10-10-189-209\x00
+|   Domain name: eu-west-1.compute.internal
+|   FQDN: ip-10-10-189-209.eu-west-1.compute.internal
+|_  System time: 2022-12-06T14:48:10+00:00
+|_nbstat: NetBIOS name: IP-10-10-189-20, NetBIOS user: <unknown>, NetBIOS MAC: 000000000000 (Xerox)
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2022-12-06T14:48:10
+|_  start_date: N/A
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Dec  6 09:32:02 2022 -- 1 IP address (1 host up) scanned in 47.55 seconds

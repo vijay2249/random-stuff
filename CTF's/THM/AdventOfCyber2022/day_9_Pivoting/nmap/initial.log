@@ -1,0 +1,20 @@
+# Nmap 7.93 scan initiated Sat Dec 10 10:56:10 2022 as: nmap -T4 -A -Pn -o nmap/initial.log 10.10.40.89
+Nmap scan report for 10.10.40.89
+Host is up (0.30s latency).
+Not shown: 990 closed tcp ports (conn-refused)
+PORT      STATE    SERVICE       VERSION
+80/tcp    open     http          Apache httpd 2.4.54 ((Debian))
+|_http-server-header: Apache/2.4.54 (Debian)
+|_http-title: Curabitur aliquet, libero id suscipit semper
+83/tcp    filtered mit-ml-dev
+1114/tcp  filtered mini-sql
+1840/tcp  filtered netopia-vo2
+3211/tcp  filtered avsecuremgmt
+5009/tcp  filtered airport-admin
+5050/tcp  filtered mmcc
+7627/tcp  filtered soap-http
+12000/tcp filtered cce4x
+55056/tcp filtered unknown
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Dec 10 10:57:07 2022 -- 1 IP address (1 host up) scanned in 57.07 seconds

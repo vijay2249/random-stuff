@@ -1,0 +1,8 @@
+# search for domain details santagift.shop
+whois santagift.shop 
+#this works in kali linux
+
+#search for site santagift.shop website source code in github using google dorking on site:github.com
+
+#remaining questions are related to the source code that is found from the above search
+

@@ -1,0 +1,10 @@
+export IP=<IP>
+
+#email analyzer
+emlAnalyzer -i <path/to/.eml/file> --header --html -u --text --extract-all
+
+#sha256 value
+sha256sum <file/path>
+
+
+#remaining questions are done in the website searching as mentioned in information guide

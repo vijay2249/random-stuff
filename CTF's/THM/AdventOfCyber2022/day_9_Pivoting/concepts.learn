@@ -1,0 +1,10 @@
+Docker
+A common way to tell if a comprmised application is running in a Docker container is to verify the existence of a "./dockerenv" file at the root directory of the system
+
+
+
+Metasploit
+Network Pivoting
+Post Exploitation
+Meterpreter usage and what is meterpreter
+
