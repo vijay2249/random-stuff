@@ -8,24 +8,19 @@ import scapy.all as scapy
 
 def get_gateway():
     result = subprocess.check_output(["ip", "r"]) #run the command "ip r" in terminal and store the result in the result variable
-    gateway_result = re.search(r"\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}", str(result)) #search for the IP type digits in the result and store it in variable
-    return gateway_result.group(0) # return if any caught the above search values
+    gateway_result = re.search(r"\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}", str(result)) #search for the IP type digits in the result
+    return gateway_result.group(0)
 
 def get_arguments():
-    parser = argparse.ArgumentParser() #create an instance of the argparse 
-    #include an target IP address option as an argument
+    parser = argparse.ArgumentParser()
     parser.add_argument("-t", "--target", dest="Target", help="Target system IP address")
-    #include gateway IP option as the argument
     parser.add_argument("-g", "--gateway", dest="Gateway", help="Gateway IP address of the network")
-    #capture the input values for these arguments in options variable
     options = parser.parse_args()
-    #if Target IP address is not mentioned then we throw the error and stop running the program
     if not options.Target:
         parser.error("[-] Please enter the correct target IP address")
     #gateway address is same for all the systems in the same network hence can be found by using the terminal commands...
     # if mentioned then we consider that as the gateway IP, else we do run this if condition section to get the gateway IP
     if not options.Gateway:
-        #we can find the default gateway IP address of the local network without user input
         ip = get_gateway()
         print(f"[-] No gateway IP mentioned, using the default gateway {ip}")
         options.Gateway = ip
