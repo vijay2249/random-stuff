@@ -1,6 +1,10 @@
 #! python3
 
-import os, sys, zipfile, argparse
+import os
+import sys
+import shutil
+import zipfile
+import argparse
 
 def folderPathByUser():
     folderInput = str(input("Enter folder path: "))
